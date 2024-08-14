@@ -6,6 +6,7 @@ step "write-out-a-simple-hello-world-to-the-user" {
 
     action {
         action_type = "Octopus.Script"
+        environments = ["dev", "qa", "stage", "prod"]
         properties = {
             Octopus.Action.RunOnServer = "false"
             Octopus.Action.Script.ScriptBody = "Write-Highlight \"Hello World!\""
