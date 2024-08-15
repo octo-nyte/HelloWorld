@@ -16,3 +16,22 @@ step "write-out-a-simple-hello-world-to-the-user" {
         worker_pool_variable = ""
     }
 }
+
+step "just-another-run-a-script-step" {
+    name = "Just another !Run a Script\" step :)"
+    properties = {
+        Octopus.Action.TargetRoles = "trident-web"
+    }
+
+    action {
+        action_type = "Octopus.Script"
+        environments = ["prod"]
+        properties = {
+            Octopus.Action.RunOnServer = "false"
+            Octopus.Action.Script.ScriptBody = "Write-Highlight \"Goodbye World!\""
+            Octopus.Action.Script.ScriptSource = "Inline"
+            Octopus.Action.Script.Syntax = "PowerShell"
+        }
+        worker_pool_variable = ""
+    }
+}
